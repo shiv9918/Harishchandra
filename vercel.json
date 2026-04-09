@@ -1,0 +1,17 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://admin-dashboard-harish.vercel.app",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://admin-dashboard-harish.vercel.app/:path*",
+      "permanent": false
+    }
+  ]
+}

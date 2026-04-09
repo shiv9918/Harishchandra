@@ -1,0 +1,350 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #913c07;
+  --color-secondary: #563c29;
+  --color-bg: #fff4dc;
+  --color-primary-light: #b04a09;
+  --color-primary-dark: #6b2d05;
+  --color-secondary-light: #6e4d37;
+  --color-secondary-dark: #3e2b1f;
+  --color-bg-dark: #f5e8c0;
+  --color-accent: #c45b0a;
+}
+
+* {
+  font-family: 'Belleza', sans-serif;
+}
+
+body {
+  font-family: 'Belleza', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Alegreya', serif;
+  color: var(--color-primary);
+}
+
+p,
+span,
+div,
+li,
+a,
+td,
+th,
+label,
+input,
+textarea,
+button {
+  font-family: 'Belleza', sans-serif;
+}
+
+.font-primary {
+  font-family: 'Belleza', sans-serif !important;
+}
+
+.font-secondary {
+  font-family: 'Alegreya', serif !important;
+}
+
+/* Tabular numbers styling with proper alignment - Times New Roman for ALL numbers */
+* {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Apply Times New Roman to ALL elements that might contain numbers */
+td,
+th,
+.number,
+[class*="year"],
+[class*="date"],
+[class*="count"],
+[class*="index"],
+span,
+div,
+p,
+li,
+a,
+button,
+input,
+textarea,
+label,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Specific styling for elements with numbers */
+td,
+th,
+.number,
+[class*="year"],
+[class*="date"],
+[class*="count"],
+[class*="index"] {
+  font-family: 'Times New Roman', Times, serif !important;
+  vertical-align: middle !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
+
+/* Apply Times New Roman to ALL table cells */
+table * {
+  font-family: 'Times New Roman', Times, serif !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* Ensure all table elements have consistent alignment */
+table {
+  border-collapse: collapse;
+}
+
+table td,
+table th {
+  vertical-align: middle !important;
+  text-align: center !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+/* Fix number alignment in all contexts */
+.number,
+td:first-child,
+[class*="year"] {
+  vertical-align: middle !important;
+  text-align: center !important;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+/* Ensure spans and divs containing numbers maintain alignment */
+span,
+div {
+  vertical-align: baseline;
+}
+
+/* Specific styling for table data cells with numbers */
+table tbody td {
+  vertical-align: middle !important;
+  text-align: center !important;
+  align-items: center !important;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+table thead th {
+  vertical-align: middle !important;
+  text-align: center !important;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+/* Apply to calendar, dates, and any numeric content */
+[class*="calendar"] *,
+[class*="Calendar"] *,
+[class*="date"] *,
+[class*="Date"] *,
+[class*="year"] *,
+[class*="Year"] *,
+[class*="month"] *,
+[class*="Month"] *,
+[class*="day"] *,
+[class*="Day"] * {
+  font-family: 'Times New Roman', Times, serif !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* Reset text alignment for title columns */
+table td:nth-child(2),
+table th:nth-child(2) {
+  text-align: left !important;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  table {
+    font-size: 0.75rem;
+  }
+
+  td,
+  th {
+    padding: 0.5rem 0.25rem !important;
+  }
+}
+
+/* Touch-friendly buttons and links */
+a,
+button {
+  -webkit-tap-highlight-color: rgba(145, 60, 7, 0.2);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better table overflow on mobile */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+.bg-theme-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-theme-secondary {
+  background-color: var(--color-secondary);
+}
+
+.text-theme-primary {
+  color: var(--color-primary);
+}
+
+.text-theme-secondary {
+  color: var(--color-secondary);
+}
+
+/* CMS Content Styling to preserve layout */
+.cms-content {
+  width: 100%;
+  font-family: 'Belleza', sans-serif;
+}
+
+.cms-content p,
+.cms-content span,
+.cms-content div {
+  font-family: 'Belleza', sans-serif;
+}
+
+/* Force Times New Roman for numbers and Mono classes */
+.cms-content .font-mono,
+.cms-content .tabular-nums,
+.cms-content strong,
+.cms-content b {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+.cms-content h1,
+.cms-content h2,
+.cms-content h3,
+.cms-content h4 {
+  font-family: 'Alegreya', serif;
+}
+
+.cms-content p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: var(--color-secondary);
+}
+
+.cms-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s;
+}
+
+.cms-content a:hover {
+  opacity: 0.8;
+}
+
+.cms-content h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Alegreya', serif;
+}
+
+.cms-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Alegreya', serif;
+}
+
+/* Button Styles for CMS */
+.cms-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white !important;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  margin: 1rem 0;
+}
+
+.cms-button:hover {
+  background-color: #7a3306;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(145, 60, 7, 0.2);
+}
+
+.cms-content hr {
+  border: 0;
+  border-top: 1px solid var(--color-primary);
+  margin: 1rem 0;
+}
+
+.cms-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.cms-content table tr {
+  border-top: 1px solid var(--color-primary);
+}
+
+.cms-content table tr:first-child {
+  border-top: 0;
+}
+
+.cms-content table td,
+.cms-content table th {
+  padding: 0.75rem 0.5rem;
+  text-align: left !important;
+  color: var(--color-secondary);
+}
+
+.cms-content table th,
+.cms-content table td:first-child {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.cms-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.cms-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
