@@ -14,7 +14,7 @@ const ProfileSidebar = () => {
       {/* Profile Image */}
       <div className="p-1 sm:p-2 overflow-hidden">
         <img
-          src="/newprofile.jpeg"
+          src="/profile.jpeg"
           alt="Dr. Harish Chandra"
           className={`w-full aspect-square object-cover shadow-secondary transition duration-300 z-10 shadow-lg sm:shadow-xl rounded-lg sm:rounded-xl ${slideClass}`}
         />
