@@ -2,11 +2,18 @@ import { useState, useEffect } from "react";
 
 const ProfileSidebar = () => {
   const [slideClass, setSlideClass] = useState("-translate-x-full");
+  const [imageSrc, setImageSrc] = useState(`${import.meta.env.BASE_URL}profile.jpg`);
 
   useEffect(() => {
     const timer = setTimeout(() => setSlideClass("translate-x-0"), 10);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleImageError = () => {
+    if (!imageSrc.includes("newprofile.jpeg")) {
+      setImageSrc(`${import.meta.env.BASE_URL}newprofile.jpeg`);
+    }
+  };
 
   return (
     <aside className="w-full lg:w-1/4 mb-6 lg:mb-0">
@@ -14,8 +21,9 @@ const ProfileSidebar = () => {
       {/* Profile Image */}
       <div className="p-1 sm:p-2 overflow-hidden">
         <img
-          src="/profile.jpeg"
+          src={imageSrc}
           alt="Dr. Harish Chandra"
+          onError={handleImageError}
           className={`w-full aspect-square object-cover shadow-secondary transition duration-300 z-10 shadow-lg sm:shadow-xl rounded-lg sm:rounded-xl ${slideClass}`}
         />
       </div>
