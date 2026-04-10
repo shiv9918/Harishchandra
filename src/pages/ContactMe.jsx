@@ -1,4 +1,4 @@
-﻿import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
 
@@ -9,14 +9,14 @@ const Contact = () => {
 
   if (data?.content || data?.blocks?.length > 0) {
     return (
-      <div className=" p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
+      <div className="border border-[#913c07] p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
         <CmsContent content={data.content} blocks={data.blocks} contentClassName="contact-cms-content" />
       </div>
     );
   }
 
   return (
-    <div className="  p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
+    <div className="border border-[#913c07] p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
       {/* Title */}
       <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#913c07] mb-4 sm:mb-6">
         Contact Details
