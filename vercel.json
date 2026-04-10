@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+
   "redirects": [
     {
       "source": "/admin",
@@ -12,6 +13,13 @@
       "source": "/admin/:path*",
       "destination": "https://admin-dashboard-harish.vercel.app/:path*",
       "permanent": false
+    }
+  ],
+
+  "rewrites": [
+    {
+      "source": "/((?!assets|.*\\..*).*)",
+      "destination": "/index.html"
     }
   ]
 }
