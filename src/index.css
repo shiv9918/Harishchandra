@@ -230,9 +230,7 @@ html {
   font-family: 'Belleza', sans-serif;
 }
 
-/* Force Times New Roman for numbers and Mono classes */
-.cms-content .font-mono,
-.cms-content .tabular-nums,
+/* Keep strong emphasis serif; let number utility classes inherit normal page font. */
 .cms-content strong,
 .cms-content b {
   font-family: 'Times New Roman', Times, serif !important;
@@ -256,10 +254,24 @@ html {
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: opacity 0.2s;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  display: inline;
 }
 
 .cms-content a:hover {
   opacity: 0.8;
+}
+
+/* Table links should look like plain "View" actions (no underline). */
+.cms-content table a {
+  text-decoration: none;
+  text-underline-offset: 0;
+}
+
+.cms-content table a:hover {
+  text-decoration: none;
 }
 
 .cms-content h2 {
@@ -278,6 +290,15 @@ html {
   margin-top: 1.25rem;
   margin-bottom: 0.75rem;
   font-family: 'Alegreya', serif;
+}
+
+/* Contact page: keep details text (including numbers) in a simple Times style. */
+.cms-content.contact-cms-content,
+.cms-content.contact-cms-content p,
+.cms-content.contact-cms-content span,
+.cms-content.contact-cms-content div,
+.cms-content.contact-cms-content a {
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 /* Button Styles for CMS */
@@ -312,36 +333,103 @@ html {
   border-collapse: collapse;
   margin-bottom: 2rem;
   font-family: 'Times New Roman', Times, serif;
+  border: 1px solid var(--color-primary);
+  table-layout: fixed;       /* CRITICAL: lock column widths — prevents layout shift on add/delete */
+  word-wrap: break-word;     /* allow long text to wrap within fixed columns */
+  overflow-wrap: break-word;
 }
 
-.cms-content table tr {
-  border-top: 1px solid var(--color-primary);
+/* ── Header row styling (tables WITH <thead>) ── */
+.cms-content table thead tr {
+  background-color: var(--color-primary);
+  border: none;
 }
 
-.cms-content table tr:first-child {
-  border-top: 0;
+.cms-content table thead th {
+  padding: 0.625rem 0.75rem;
+  text-align: left !important;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+.cms-content table thead th:last-child {
+  border-right: none;
+}
+
+/* ── Header row styling (tables WITHOUT <thead> — corrupted by Quill) ── */
+/* When there is no <thead>, the FIRST row in <tbody> is the header */
+.cms-content table:not(:has(thead)) > tbody > tr:first-child {
+  background-color: var(--color-primary);
+  border: none;
+}
+
+.cms-content table:not(:has(thead)) > tbody > tr:first-child > td {
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cms-content table:not(:has(thead)) > tbody > tr:first-child > td:last-child {
+  border-right: none;
+}
+
+/* ── Data rows ── */
+.cms-content table tbody tr {
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.cms-content table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* ── Cell styling ── */
 .cms-content table td,
 .cms-content table th {
-  padding: 0.75rem 0.5rem;
+  padding: 0.625rem 0.75rem;
   text-align: left !important;
   color: var(--color-secondary);
+  vertical-align: top;
+  border-right: 1px solid rgba(145, 60, 7, 0.15);
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 0;
 }
 
-.cms-content table th,
+.cms-content table td:last-child,
+.cms-content table th:last-child {
+  border-right: none;
+}
+
+/* First column (S.No.) - primary color and centered */
 .cms-content table td:first-child {
   color: var(--color-primary);
   font-weight: 600;
+  text-align: center !important;
 }
 
-.cms-content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin: 1rem 0;
+/* Override first-child color for header rows without thead */
+.cms-content table:not(:has(thead)) > tbody > tr:first-child > td:first-child {
+  color: #fff !important;
+  text-align: left !important;
 }
 
+/* Hover effect on data rows (skip header row in no-thead tables) */
+.cms-content table:has(thead) tbody tr:hover {
+  background-color: rgba(145, 60, 7, 0.03);
+}
+
+.cms-content table:not(:has(thead)) > tbody > tr:not(:first-child):hover {
+  background-color: rgba(145, 60, 7, 0.03);
+}
+
+/* ── Images ── */
 .cms-content img {
   max-width: 100%;
   height: auto;

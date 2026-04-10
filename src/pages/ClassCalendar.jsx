@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Calendar as CalendarIcon } from "lucide-react";
+import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
 
 const ClassCalendar = () => {
@@ -128,17 +129,7 @@ const ClassCalendar = () => {
       {/* CMS Content */}
       {(data?.content || data?.blocks?.length > 0) && (
         <div className="bg-white border border-[#913c07] rounded-lg p-4 sm:p-6 mb-6">
-          <div className="cms-content">
-            {data.content && <div dangerouslySetInnerHTML={{ __html: data.content }} />}
-            {data.blocks?.map(block => (
-              <div key={block.id} className="mt-4">
-                {block.type === 'text' && <div dangerouslySetInnerHTML={{ __html: block.content }} />}
-                {block.type === 'image' && block.url && (
-                  <img src={block.url} alt="Calendar Block" className="max-w-full h-auto rounded-lg mx-auto" />
-                )}
-              </div>
-            ))}
-          </div>
+          <CmsContent content={data.content} blocks={data.blocks} />
         </div>
       )}
 

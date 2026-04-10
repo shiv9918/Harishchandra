@@ -1,32 +1,6 @@
-import { Phone, Mail, MapPin, ImageIcon } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
-
-const contactProfileLinks = [
-  {
-    url: "https://www.researchgate.net/profile/Harish-Chandra-4?ev=hdr_xprf",
-    label: "ResearchGate",
-    logoText: "RG",
-    logoClass: "bg-[#00CCBB] text-white",
-  },
-  {
-    url: "https://www.linkedin.com/in/harish-chandra-1335086a/",
-    label: "LinkedIn",
-    logoText: "in",
-    logoClass: "bg-[#0A66C2] text-white",
-  },
-  {
-    url: "https://scholar.google.com/citations?user=VeAyaAgAAAAJ&hl=en",
-    label: "Google Scholar",
-    logoText: "GS",
-    logoClass: "bg-[#4285F4] text-white",
-  },
-  {
-    url: "https://orcid.org/my-orcid?orcid=0000-0001-5232-6043",
-    label: "ORCID",
-    logoText: "iD",
-    logoClass: "bg-[#A6CE39] text-[#1f3d08]",
-  },
-];
 
 const Contact = () => {
   const { data, loading } = useContent('contact');
@@ -36,49 +10,7 @@ const Contact = () => {
   if (data?.content || data?.blocks?.length > 0) {
     return (
       <div className="border border-[#913c07] p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
-        <div className="cms-content">
-          {data.content && (
-            <div dangerouslySetInnerHTML={{ __html: data.content }} />
-          )}
-          {data.blocks?.map(block => (
-            <div key={block.id} className="mt-6">
-              {block.type === 'text' && <div dangerouslySetInnerHTML={{ __html: block.content }} />}
-              {block.type === 'image' && block.url && (
-                <div className="flex items-center gap-2 text-sm">
-                  <ImageIcon size={18} className="text-[#913c07]" />
-                  <a
-                    href={block.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline underline-offset-2"
-                  >
-                    {block.title || block.name || "Contact Image"}
-                  </a>
-                </div>
-              )}
-            </div>
-          ))}
-
-          <div className="mt-8">
-            <h3 className="text-lg font-semibold text-[#913c07] mb-3">Contact</h3>
-            <div className="flex flex-wrap gap-2">
-              {contactProfileLinks.map(({ url, label, logoText, logoClass }) => (
-                <a
-                  key={url}
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md border border-[#913c07]/30 px-3 py-1.5 text-sm hover:bg-[#913c07]/10 transition-colors"
-                >
-                  <span className={`inline-flex h-5 min-w-5 items-center justify-center rounded-sm px-1 text-[10px] font-semibold ${logoClass}`}>
-                    {logoText}
-                  </span>
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
+        <CmsContent content={data.content} blocks={data.blocks} contentClassName="contact-cms-content" />
       </div>
     );
   }
@@ -149,26 +81,6 @@ const Contact = () => {
           <p className="text-sm pt-1.5 !font-mono tabular-nums">
             26°43′53.2″N 83°25′59.3″E
           </p>
-        </div>
-
-        <div className="mt-6">
-          <h4 className="text-sm sm:text-base font-semibold text-[#913c07] mb-2">Contact</h4>
-          <div className="flex flex-wrap gap-2">
-            {contactProfileLinks.map(({ url, label, logoText, logoClass }) => (
-              <a
-                key={url}
-                href={url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-[#913c07]/30 px-3 py-1.5 text-xs sm:text-sm hover:bg-[#913c07]/10 transition-colors"
-              >
-                <span className={`inline-flex h-5 min-w-5 items-center justify-center rounded-sm px-1 text-[10px] font-semibold ${logoClass}`}>
-                  {logoText}
-                </span>
-                {label}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </div>

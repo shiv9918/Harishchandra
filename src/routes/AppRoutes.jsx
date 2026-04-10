@@ -19,6 +19,7 @@ import Books from "../pages/books";
 import Software from "../pages/Software";
 import Resources from "../pages/Resources";
 import WebLinks from "../pages/WebLinks"
+import AdminEntry from "../pages/AdminEntry";
 
 
 const AppRoutes = () => {
@@ -44,6 +45,7 @@ const AppRoutes = () => {
       <Route path="/software" element={<Software />} />
       <Route path="/resources" element={<Resources />} />
       <Route path="/web-links" element={<WebLinks />} />
+      <Route path="/admin" element={<AdminEntry />} />
     </Routes>
   );
 };

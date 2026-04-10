@@ -1,4 +1,5 @@
 
+import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
 
 const Profile = () => {
@@ -11,19 +12,7 @@ const Profile = () => {
   if (data?.content || data?.blocks?.length > 0) {
     return (
       <div className="w-full border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
-        <div className="cms-content">
-          {data.content && (
-            <div dangerouslySetInnerHTML={{ __html: data.content }} />
-          )}
-          {data.blocks?.map(block => (
-            <div key={block.id} className="mt-6">
-              {block.type === 'text' && <div dangerouslySetInnerHTML={{ __html: block.content }} />}
-              {block.type === 'image' && block.url && (
-                <img src={block.url} alt="Profile Block" className="max-w-full h-auto rounded-lg shadow-md mx-auto" />
-              )}
-            </div>
-          ))}
-        </div>
+        <CmsContent content={data.content} blocks={data.blocks} />
       </div>
     );
   }

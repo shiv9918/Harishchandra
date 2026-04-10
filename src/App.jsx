@@ -7,6 +7,11 @@ import AppRoutes from "./routes/AppRoutes";
 function App() {
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isAdminRoute = location.pathname === "/admin" || location.pathname.startsWith("/admin/");
+
+  if (isAdminRoute) {
+    return <AppRoutes />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-bgColor text-secondary">

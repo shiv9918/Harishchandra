@@ -1,4 +1,5 @@
 import { useContent } from '../hooks/useContent';
+import { CmsContent } from "../components/CmsContent";
 
 const Home = () => {
   const { data, loading } = useContent('home');
@@ -7,14 +8,6 @@ const Home = () => {
   // Helper to get image from blocks (ensures we don't use empty strings)
   const imgBlock = data?.blocks?.find(b => b.type === 'image');
   const bannerImage = (imgBlock && imgBlock.url) ? imgBlock.url : "/13.JPG";
-  const normalizedTitle = data?.title
-    ? data.title.replace(/Dr\.\s*Harish\s*Chandra\s*ji/gi, 'Dr. Harish Chandra')
-    : '';
-  const normalizedContent = data?.content
-    ? data.content
-        .replace(/Dr\.\s*Harish\s*Chandra\s*ji/gi, 'Dr. Harish Chandra')
-        .replace(/nearly\s+two\s+decades/gi, 'one decade')
-    : '';
 
   if (!loading) {
     if (data) {
@@ -35,10 +28,10 @@ const Home = () => {
           <div className="space-y-2">
             <h2 className="text-[#913c07] font-bold tracking-wider uppercase text-sm">Assistant Professor</h2>
             <h1 id="homeTitle" className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
-              {normalizedTitle ? (
+              {data?.title ? (
                 <span
                   className="break-words block"
-                  dangerouslySetInnerHTML={{ __html: normalizedTitle }}
+                  dangerouslySetInnerHTML={{ __html: data.title }}
                 />
               ) : (
                 <>Dr. Harish <br /> <span className="text-[#913c07]">Chandra</span></>
@@ -48,33 +41,22 @@ const Home = () => {
           </div>
 
 
-          <div id="homeDesc" className="text-gray-600 text-base sm:text-lg leading-relaxed text-justify [&_p]:text-justify w-full break-words">
+          <div id="homeDesc" className="text-gray-600 text-base sm:text-lg leading-relaxed text-justify lg:text-left w-full break-words">
             {data?.content || data?.blocks?.length > 0 ? (
-              <div className="cms-content w-full max-w-full [&_p]:text-justify">
-                {normalizedContent && (
-                  <div
-                    dangerouslySetInnerHTML={{ __html: normalizedContent.replace(/UGC-NET/g, 'UGC&#8209;NET') }}
-                  />
-                )}
-                {/* Render any additional blocks from block builder */}
-                {data.blocks?.filter(b => b.type !== 'image').map(block => (
-                  <div key={block.id} className="mt-4">
-                    {block.type === 'text' && <div dangerouslySetInnerHTML={{ __html: block.content }} />}
-                    {block.type === 'video' && block.url && (
-                      <div className="aspect-video mt-2">
-                        <iframe src={block.url} className="w-full h-full rounded-lg" allowFullScreen title="video" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+              <CmsContent
+                content={data.content?.replace(/UGC-NET/g, 'UGC&#8209;NET')}
+                blocks={data.blocks?.filter((b) => b.type !== 'image')}
+                contentClassName="cms-content w-full max-w-full"
+                blockClassName="mt-4"
+                videoClassName="w-full h-full rounded-lg"
+              />
             ) : (
-              <div className="space-y-4 [&_p]:text-justify">
+              <div className="space-y-4">
                 <p>
                   <span className="font-semibold text-gray-800">Dr. Harish Chandra</span> is an accomplished academician serving as an Assistant Professor of Mathematics in the Department of Mathematics and Scientific Computing at Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur.
                 </p>
                 <p>
-                  With one decade of experience in teaching, research, and academic administration, he has made significant contributions to higher education. He earned his Ph.D. in Mathematics from the University of Lucknow and is a UGC-NET qualified scholar (JRF & SRF).
+                  With nearly two decades of experience in teaching, research, and academic administration, he has made significant contributions to higher education. He earned his Ph.D. in Mathematics from the University of Lucknow and is a UGC-NET qualified scholar (JRF & SRF).
                 </p>
               </div>
             )}

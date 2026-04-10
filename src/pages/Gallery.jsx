@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
 
 const Gallery = () => {
   const { data, loading } = useContent('gallery');
-  const [hiddenImageIds, setHiddenImageIds] = useState([]);
 
   if (loading) return <div className="text-center py-10">Loading...</div>;
 
@@ -13,28 +12,15 @@ const Gallery = () => {
   if (hasRealContent || hasBlocks) {
     return (
       <div className="bg-[#fff4dc] py-8 px-4 sm:px-6 lg:px-8">
-        <div className="cms-content max-w-7xl mx-auto">
-          {hasRealContent && (
-            <div dangerouslySetInnerHTML={{ __html: data.content }} />
-          )}
-
-          {hasBlocks && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {data.blocks.map((block) => (
-                <div key={block.id} className="bg-[#fff4dc] flex align-middle hover:shadow-xl transition transform duration-300 z-10 shadow-black shadow-xl rounded-xl">
-                  {block.type === 'image' && block.url && (
-                    <img
-                      src={block.url}
-                      alt="Gallery Item"
-                      className="w-full rounded-xl max-h-64 object-contain mx-auto"
-                    />
-                  )}
-                  {block.type === 'text' && <div className="p-4" dangerouslySetInnerHTML={{ __html: block.content }} />}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <CmsContent
+          content={hasRealContent ? data.content : ''}
+          blocks={hasBlocks ? data.blocks : []}
+          contentClassName="max-w-7xl mx-auto"
+          blocksContainerClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+          blockClassName="bg-[#fff4dc] flex align-middle hover:shadow-xl transition transform duration-300 z-10 shadow-black shadow-xl rounded-xl"
+          imageClassName="w-full rounded-xl max-h-64 object-contain mx-auto"
+          columnClassName="rounded-xl border border-[#913c07]/20 bg-white p-4"
+        />
       </div>
     );
   }
@@ -58,18 +44,7 @@ const Gallery = () => {
     { id: 16, srce: "/16.jpeg", alte: "Gallery Image 16" },
     { id: 17, srce: "/17.jpg", alte: "Gallery Image 17" },
     { id: 18, srce: "/18.jpg", alte: "Gallery Image 18" },
-    ...Array.from({ length: 64 }, (_, i) => {
-      const id = 101 + i;
-      return {
-        id,
-        srce: `/${id}.jpeg`,
-        alte: `Gallery Image ${id}`,
-      };
-    }),
   ];
-
-  const visibleImages = images.filter((img) => !hiddenImageIds.includes(img.id));
-
   return (
     <div className=" bg-[#fff4dc] py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -79,15 +54,12 @@ const Gallery = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Image 1 */}
-          {visibleImages.map((img) => (
-            <div key={img.id} className="bg-[#fff4dc] flex align-middle hover:shadow-xl transition transform duration-300 z-10 shadow-black shadow-xl rounded-xl">
+          {images.map((img) => (
+            <div className="bg-[#fff4dc] flex align-middle hover:shadow-xl transition transform duration-300 z-10 shadow-black shadow-xl rounded-xl">
               <img
                 src={img.srce}
                 alt={img.alte}
                 className="w-full rounded-xl max-h-64 object-contain mx-auto "
-                onError={() => {
-                  setHiddenImageIds((prev) => (prev.includes(img.id) ? prev : [...prev, img.id]));
-                }}
               />
             </div>
           ))}

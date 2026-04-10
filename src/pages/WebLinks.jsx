@@ -1,4 +1,5 @@
 import React from "react";
+import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
 
 const webLinks = [
@@ -42,28 +43,126 @@ const webLinks = [
   { url: "http://www.freebookspot.es/", label: "FreeBookSpot" },
 ];
 
+const normalizeCellText = (value = "") =>
+  String(value)
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
+
+const normalizeWebLinksContent = (html) => {
+  if (!html || typeof window === "undefined") return html;
+
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = html;
+
+  const knownLinksByName = new Map(
+    webLinks.map((item) => [normalizeCellText(item.label), item.url])
+  );
+
+  const tables = Array.from(wrapper.querySelectorAll("table"));
+  if (tables.length === 0) return wrapper.innerHTML;
+
+  const rows = [];
+  const seenNames = new Set();
+
+  tables.forEach((table) => {
+    const trList = Array.from(table.querySelectorAll("tbody tr, tr"));
+
+    trList.forEach((row) => {
+      const cells = Array.from(row.querySelectorAll("th, td"));
+      if (cells.length === 0) return;
+
+      const name = cells[0]?.textContent?.trim() || "";
+      const normalizedName = normalizeCellText(name);
+
+      // Skip header-like or malformed rows.
+      if (!normalizedName || normalizedName === "name" || normalizedName === "namelinknotes") return;
+      if (seenNames.has(normalizedName)) return;
+
+      const rawLinkCell = cells[1];
+      const anchor = rawLinkCell?.querySelector("a");
+      const rawLinkText = rawLinkCell?.textContent?.trim() || "";
+      const mappedLink = knownLinksByName.get(normalizedName) || "";
+
+      let link = anchor?.getAttribute("href")?.trim() || "";
+      if (!link && rawLinkText && rawLinkText !== "-") {
+        link = rawLinkText;
+      }
+      if (!link || link === "-") {
+        link = mappedLink;
+      }
+
+      const notes = cells[2]?.textContent?.trim() || "-";
+
+      rows.push({ name, link, notes });
+      seenNames.add(normalizedName);
+    });
+  });
+
+  if (rows.length === 0) return wrapper.innerHTML;
+
+  const canonicalTable = document.createElement("table");
+  const canonicalHead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+
+  ["Name", "Link", "Notes"].forEach((header) => {
+    const th = document.createElement("th");
+    th.textContent = header;
+    headRow.appendChild(th);
+  });
+
+  canonicalHead.appendChild(headRow);
+  canonicalTable.appendChild(canonicalHead);
+
+  const canonicalBody = document.createElement("tbody");
+  rows.forEach(({ name, link, notes }) => {
+    const tr = document.createElement("tr");
+
+    const nameTd = document.createElement("td");
+    nameTd.textContent = name;
+    tr.appendChild(nameTd);
+
+    const linkTd = document.createElement("td");
+    if (link) {
+      const a = document.createElement("a");
+      a.href = link;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = link;
+      linkTd.appendChild(a);
+    } else {
+      linkTd.textContent = "-";
+    }
+    tr.appendChild(linkTd);
+
+    const notesTd = document.createElement("td");
+    notesTd.textContent = notes || "-";
+    tr.appendChild(notesTd);
+
+    canonicalBody.appendChild(tr);
+  });
+
+  canonicalTable.appendChild(canonicalBody);
+
+  const firstTable = tables[0];
+  firstTable.replaceWith(canonicalTable);
+  tables.slice(1).forEach((table) => table.remove());
+
+  return wrapper.innerHTML;
+};
+
 const WebLinks = () => {
   const { data, loading } = useContent('web-links');
 
   if (loading) return null;
 
   if (data?.content || data?.blocks?.length > 0) {
+    const normalizedContent = normalizeWebLinksContent(data.content);
+
     return (
       <div className="max-w-4xl mx-auto my-10 px-6">
         <div className="bg-[#fff4dc] border border-[#913c07] rounded-lg shadow-md p-6">
-          <div className="cms-content">
-            {data.content && (
-              <div dangerouslySetInnerHTML={{ __html: data.content }} />
-            )}
-            {data.blocks?.map(block => (
-              <div key={block.id} className="mt-6">
-                {block.type === 'text' && <div dangerouslySetInnerHTML={{ __html: block.content }} />}
-                {block.type === 'image' && block.url && (
-                  <img src={block.url} alt="Link Block" className="max-w-full h-auto rounded-lg shadow-md mx-auto" />
-                )}
-              </div>
-            ))}
-          </div>
+          <CmsContent content={normalizedContent} blocks={data.blocks} />
         </div>
       </div>
     );

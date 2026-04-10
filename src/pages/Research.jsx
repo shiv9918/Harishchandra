@@ -1,17 +1,5 @@
+import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
-
-const patents = [
-  {
-    id: 1,
-    title: 'PORTABLE MATHEMATICS RESEARCH AND COMPUTATION SUPPORT DEVICE',
-    details: 'Design Number: 475702-001, 03/10/2025',
-  },
-  {
-    id: 2,
-    title: 'AN IMAGE PLAGIARISM DETECTION SYSTEM',
-    details: 'Application Number: 202511114525 A, Publication Date: 09/01/2026',
-  },
-];
 
 const Research = () => {
   const { data, loading } = useContent('research');
@@ -21,34 +9,7 @@ const Research = () => {
   if (data?.content || data?.blocks?.length > 0) {
     return (
       <div className="border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
-        <div className="cms-content">
-          {data.content && (
-            <div dangerouslySetInnerHTML={{ __html: data.content }} />
-          )}
-          {data.blocks?.map(block => (
-            <div key={block.id} className="mt-6">
-              {block.type === 'text' && <div dangerouslySetInnerHTML={{ __html: block.content }} />}
-              {block.type === 'image' && block.url && (
-                <img src={block.url} alt="Research Block" className="max-w-full h-auto rounded-lg shadow-md mx-auto" />
-              )}
-            </div>
-          ))}
-
-          <div className="mt-8 border-t border-[#913c07] pt-4">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#913c07] mb-3">
-              Patents
-            </h3>
-            <ul className="space-y-3 text-sm sm:text-base text-secondary">
-              {patents.map((patent) => (
-                <li key={patent.id} className="leading-relaxed">
-                  <span className="font-semibold text-[#913c07]">Title:</span> {patent.title}
-                  <br />
-                  <span>{patent.details}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <CmsContent content={data.content} blocks={data.blocks} />
       </div>
     );
   }
@@ -105,21 +66,6 @@ const Research = () => {
 
           </tbody>
         </table>
-      </div>
-
-      <div className="mt-8 border-t border-[#913c07] pt-4">
-        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#913c07] mb-3">
-          Patents
-        </h3>
-        <ul className="space-y-3 text-sm sm:text-base text-secondary">
-          {patents.map((patent) => (
-            <li key={patent.id} className="leading-relaxed">
-              <span className="font-semibold text-[#913c07]">Title:</span> {patent.title}
-              <br />
-              <span>{patent.details}</span>
-            </li>
-          ))}
-        </ul>
       </div>
 
     </div>
