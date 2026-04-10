@@ -1,4 +1,4 @@
-import { CmsContent } from "../components/CmsContent";
+﻿import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
 
 const Workshops = () => {
@@ -263,7 +263,7 @@ const Workshops = () => {
 
   if (data?.content || data?.blocks?.length > 0) {
     return (
-      <div className="border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
+      <div className=" p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
         <CmsContent content={data.content} blocks={data.blocks} />
       </div>
     );
@@ -275,7 +275,7 @@ const Workshops = () => {
         Workshops & Events
       </h1>
 
-      <div className="bg-[#fff4dc] rounded-lg border-2 border-[#913c07] shadow-sm overflow-hidden">
+      <div className="bg-[#fff4dc] rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-xs sm:text-sm md:text-base">
             <thead>
@@ -314,6 +314,8 @@ const Workshops = () => {
 };
 
 export default Workshops;
+
+
 
 
 

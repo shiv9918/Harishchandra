@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
 
@@ -34,7 +34,7 @@ const webLinks = [
   {
     url: "https://crazyproject.wordpress.com/",
     label: "crazyproject.wordpress.com",
-    note: "Very useful site—it contains solutions to Dummit and Foote",
+    note: "Very useful siteâ€”it contains solutions to Dummit and Foote",
   },
   { url: "http://en.bookfi.org/", label: "Bookfi" },
   { url: "http://www.bookboon.com/", label: "Bookboon" },
@@ -161,7 +161,7 @@ const WebLinks = () => {
 
     return (
       <div className="max-w-4xl mx-auto my-10 px-6">
-        <div className="bg-[#fff4dc] border border-[#913c07] rounded-lg shadow-md p-6">
+        <div className="bg-[#fff4dc]  rounded-lg shadow-md p-6">
           <CmsContent content={normalizedContent} blocks={data.blocks} />
         </div>
       </div>
@@ -170,7 +170,7 @@ const WebLinks = () => {
 
   return (
     <div className="max-w-4xl mx-auto my-10 px-6">
-      <div className="bg-[#fff4dc] border border-[#913c07] rounded-lg shadow-md p-6">
+      <div className="bg-[#fff4dc]  rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-[#913c07] mb-4">WEB LINKS</h2>
         <p className="text-sm text-[#563c29] mb-6">
           Here are links to free software and books:
@@ -218,3 +218,4 @@ const WebLinks = () => {
 };
 
 export default WebLinks;
+

@@ -1,4 +1,4 @@
-import { useContent } from "../hooks/useContent";
+﻿import { useContent } from "../hooks/useContent";
 import { CmsContent } from "../components/CmsContent";
 
 const Talks = () => {
@@ -24,13 +24,13 @@ const Talks = () => {
     {
       title: "Invited talk on LaTeX",
       date: "February 28, 2014",
-      venue: "Refresher Course in Math's, Statistics, Computer Science & Astronomy (February 14 – March 07, 2014), HRD Center Lucknow University, Lucknow",
+      venue: "Refresher Course in Math's, Statistics, Computer Science & Astronomy (February 14 â€“ March 07, 2014), HRD Center Lucknow University, Lucknow",
       audience: "Refresher Course Participants"
     },
     {
       title: "Invited Talk on LaTeX",
       date: "March 3, 2014",
-      venue: "Refresher Course in Math's, Statistics, Computer Science & Astronomy (February 14 – March 07, 2014), HRD Center Lucknow University, Lucknow",
+      venue: "Refresher Course in Math's, Statistics, Computer Science & Astronomy (February 14 â€“ March 07, 2014), HRD Center Lucknow University, Lucknow",
       audience: "Refresher Course Participants"
     },
     {
@@ -48,13 +48,13 @@ const Talks = () => {
     {
       title: "LaTeX Typesetting",
       date: "January 14, 2019",
-      venue: "Refresher Course on Maths, Statistics, Computer Science & Astronomy (January 2 – January 23, 2019), HRD Center Lucknow University, Lucknow",
+      venue: "Refresher Course on Maths, Statistics, Computer Science & Astronomy (January 2 â€“ January 23, 2019), HRD Center Lucknow University, Lucknow",
       audience: "Refresher Course Participants"
     },
     {
       title: "Presentation with LaTeX",
       date: "January 22, 2019",
-      venue: "Refresher Course on Maths, Statistics, Computer Science & Astronomy (January 2 – January 23, 2019), HRD Center Lucknow University, Lucknow",
+      venue: "Refresher Course on Maths, Statistics, Computer Science & Astronomy (January 2 â€“ January 23, 2019), HRD Center Lucknow University, Lucknow",
       audience: "Refresher Course Participants"
     },
     {
@@ -78,7 +78,7 @@ const Talks = () => {
     {
       title: "Typesetting with LaTeX",
       date: "February 29, 2020",
-      venue: "Refresher Course on Mathematics, Statistics, Computer Science & Astronomy (MD) (February 17 – February 29, 2020), HRD Center Lucknow University, Lucknow",
+      venue: "Refresher Course on Mathematics, Statistics, Computer Science & Astronomy (MD) (February 17 â€“ February 29, 2020), HRD Center Lucknow University, Lucknow",
       audience: "Refresher Course Participants"
     },
     {
@@ -143,7 +143,7 @@ const Talks = () => {
         Talks Delivered
       </h1>
 
-      <div className="bg-[#fff4dc] rounded-lg border-2 border-[#913c07] shadow-sm overflow-hidden">
+      <div className="bg-[#fff4dc] rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-xs sm:text-sm md:text-base">
             <thead>
@@ -182,6 +182,7 @@ const Talks = () => {
 };
 
 export default Talks;
+
 
 
 

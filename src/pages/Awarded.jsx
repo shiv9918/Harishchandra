@@ -1,4 +1,4 @@
-import { CmsContent } from "../components/CmsContent";
+﻿import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
 
 const Awarded = () => {
@@ -127,7 +127,7 @@ const Awarded = () => {
       </h1>
 
       {/* PhD Awarded */}
-      <div className="bg-[#fff4dc] rounded-lg border-2 border-[#913c07] shadow-sm overflow-hidden">
+      <div className="bg-[#fff4dc] rounded-lg shadow-sm overflow-hidden">
         <h2 className="text-xl sm:text-2xl font-bold text-[#913c07] px-3 sm:px-4 py-3 bg-gray-50">
           Ph.D. Awarded
         </h2>
@@ -158,7 +158,7 @@ const Awarded = () => {
       </div>
 
       {/* PhD Undergoing */}
-      <div className="bg-[#fff4dc] rounded-lg border-2 border-[#913c07] shadow-sm overflow-hidden">
+      <div className="bg-[#fff4dc] rounded-lg shadow-sm overflow-hidden">
         <h2 className="text-xl sm:text-2xl font-bold text-[#913c07] px-3 sm:px-4 py-3 bg-gray-50">
           Ph.D. Undergoing
         </h2>
@@ -185,7 +185,7 @@ const Awarded = () => {
       </div>
 
       {/* M.Sc. Dissertation Awarded */}
-      <div className="bg-[#fff4dc] rounded-lg border-2 border-[#913c07] shadow-sm overflow-hidden">
+      <div className="bg-[#fff4dc] rounded-lg shadow-sm overflow-hidden">
         <h2 className="text-xl sm:text-2xl font-bold text-[#913c07] px-3 sm:px-4 py-3 bg-gray-50">
           M.Sc. Dissertation Awarded
         </h2>
@@ -217,6 +217,7 @@ const Awarded = () => {
 };
 
 export default Awarded;
+
 
 
 

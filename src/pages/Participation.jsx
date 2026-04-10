@@ -1,4 +1,4 @@
-import { useContent } from "../hooks/useContent";
+﻿import { useContent } from "../hooks/useContent";
 import { CmsContent } from "../components/CmsContent";
 
 const Participation = () => {
@@ -83,7 +83,7 @@ const Participation = () => {
         Miscellaneous Participation
       </h1>
 
-      <div className="bg-[#fff4dc] rounded-lg border-2 border-[#913c07] shadow-sm overflow-hidden">
+      <div className="bg-[#fff4dc] rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-xs sm:text-sm md:text-base">
             <thead>
@@ -122,6 +122,7 @@ const Participation = () => {
 };
 
 export default Participation;
+
 
 
 

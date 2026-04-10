@@ -1,4 +1,4 @@
-import { CmsContent } from "../components/CmsContent";
+﻿import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
 
 const Gallery = () => {

@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+﻿import { Phone, Mail, MapPin } from "lucide-react";
 import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
 
@@ -9,14 +9,14 @@ const Contact = () => {
 
   if (data?.content || data?.blocks?.length > 0) {
     return (
-      <div className="border border-[#913c07] p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
+      <div className=" p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
         <CmsContent content={data.content} blocks={data.blocks} contentClassName="contact-cms-content" />
       </div>
     );
   }
 
   return (
-    <div className=" border border-[#913c07] p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
+    <div className="  p-3 sm:p-4 md:p-6 bg-[#fff4dc] text-secondary font-primary">
       {/* Title */}
       <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#913c07] mb-4 sm:mb-6">
         Contact Details
@@ -41,7 +41,7 @@ const Contact = () => {
           <p>Department of Mathematics and Scientific Computing</p>
           <p>Madan Mohan Malaviya University of Technology</p>
           <p>
-            Gorakhpur, Uttar Pradesh –{" "}
+            Gorakhpur, Uttar Pradesh â€“{" "}
             <span className="!font-mono tabular-nums">273010</span>, India
           </p>
         </div>
@@ -79,7 +79,7 @@ const Contact = () => {
             <MapPin size={18} />
           </div>
           <p className="text-sm pt-1.5 !font-mono tabular-nums">
-            26°43′53.2″N 83°25′59.3″E
+            26Â°43â€²53.2â€³N 83Â°25â€²59.3â€³E
           </p>
         </div>
       </div>
@@ -88,3 +88,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

@@ -1,4 +1,4 @@
-import { CmsContent } from "../components/CmsContent";
+﻿import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
 
 const Achievements = () => {
@@ -8,14 +8,14 @@ const Achievements = () => {
 
   if (data?.content || data?.blocks?.length > 0) {
     return (
-      <div className="border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
+      <div className=" p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
         <CmsContent content={data.content} blocks={data.blocks} />
       </div>
     );
   }
 
   return (
-    <div className="border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
+    <div className=" p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
 
       {/* ================= Scholarships & Fellowships ================= */}
       <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#913c07] mb-3 sm:mb-4">
@@ -33,19 +33,19 @@ const Achievements = () => {
           </thead>
           <tbody>
             <tr className="border-b border-[#913c07]">
-              <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">2010 – 2012</td>
+              <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">2010 â€“ 2012</td>
               <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2 font-medium">Senior Research Fellow</td>
               <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">University Grant Commission (UGC), India</td>
             </tr>
 
             <tr className="border-b border-[#913c07]">
-              <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">2008 – 2010</td>
+              <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">2008 â€“ 2010</td>
               <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2 font-medium">Junior Research Fellow</td>
               <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">University Grant Commission (UGC), India</td>
             </tr>
 
             <tr className="border-b border-[#913c07]">
-              <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">2006 – 2007</td>
+              <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">2006 â€“ 2007</td>
               <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2 font-medium">RBS M Mate Fellow</td>
               <td className="py-2 sm:py-3 md:py-4 px-1 sm:px-2">Lucknow University</td>
             </tr>
@@ -70,7 +70,7 @@ const Achievements = () => {
           <tbody>
             <tr className="border-b border-[#913c07]">
               <td className="py-4">2007</td>
-              <td className="py-4 font-medium">NET (JRF) – Mathematics</td>
+              <td className="py-4 font-medium">NET (JRF) â€“ Mathematics</td>
               <td className="py-4">University Grant Commission (UGC), India</td>
             </tr>
           </tbody>
@@ -128,6 +128,7 @@ const Achievements = () => {
 };
 
 export default Achievements;
+
 
 
 

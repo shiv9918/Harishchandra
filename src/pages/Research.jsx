@@ -1,4 +1,4 @@
-import { CmsContent } from "../components/CmsContent";
+﻿import { CmsContent } from "../components/CmsContent";
 import { useContent } from '../hooks/useContent';
 
 const Research = () => {
@@ -8,14 +8,14 @@ const Research = () => {
 
   if (data?.content || data?.blocks?.length > 0) {
     return (
-      <div className="border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
+      <div className=" p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
         <CmsContent content={data.content} blocks={data.blocks} />
       </div>
     );
   }
 
   return (
-    <div className="border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
+    <div className=" p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
 
       {/* Page Title */}
       <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#913c07]">
@@ -40,7 +40,7 @@ const Research = () => {
                 Period
               </td>
               <td className="py-2 sm:py-3 px-2 sm:px-0">
-                2017 – 2020
+                2017 â€“ 2020
               </td>
             </tr>
 
@@ -73,6 +73,7 @@ const Research = () => {
 };
 
 export default Research;
+
 
 
 

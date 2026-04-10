@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
 
@@ -45,14 +45,14 @@ const Resources = () => {
 
   if (data?.content || data?.blocks?.length > 0) {
     return (
-      <div className="border border-[#913c07] p-6 bg-[#fff4dc] w-fit mx-auto my-8 shadow-sm font-primary">
+      <div className=" p-6 bg-[#fff4dc] w-fit mx-auto my-8 shadow-sm font-primary">
         <CmsContent content={data.content} blocks={data.blocks} />
       </div>
     );
   }
 
   return (
-    <div className="border border-[#913c07] p-6 bg-[#fff4dc] w-fit mx-auto my-8 shadow-sm font-primary">
+    <div className=" p-6 bg-[#fff4dc] w-fit mx-auto my-8 shadow-sm font-primary">
       {/*Header*/}
       <h2 className="text-2xl md:text-3xl font-semibold text-[#913c07] mb-6 border-b border-[#913c07]/30 pb-2">
         RESOURCES
@@ -121,3 +121,4 @@ const Resources = () => {
 };
 
 export default Resources;
+

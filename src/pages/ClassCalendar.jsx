@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Calendar as CalendarIcon } from "lucide-react";
 import { CmsContent } from "../components/CmsContent";
 import { useContent } from "../hooks/useContent";
@@ -71,7 +71,7 @@ const ClassCalendar = () => {
   };
 
   return (
-    <div className="border border-[#913c07] p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
+    <div className=" p-2 sm:p-4 md:p-6 bg-[#fff4dc]">
 
       <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#913c07] mb-3 sm:mb-4 flex items-center gap-2">
         <CalendarIcon size={28} />
@@ -167,3 +167,4 @@ const ClassCalendar = () => {
 };
 
 export default ClassCalendar;
+
