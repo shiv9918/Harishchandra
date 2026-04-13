@@ -8,13 +8,6 @@ const Gallery = () => {
 
   const TOTAL_IMAGES = 164;
 
-  const getImagePaths = (num) => [
-    `/${num}.jpeg`,
-    `/${num}.jpg`,
-    `/${num}.JPG`,
-    `/${num}.png`,
-  ];
-
   return (
     <div className="bg-[#fff4dc] py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -34,30 +27,33 @@ const Gallery = () => {
 };
 
 const ImageCard = ({ num }) => {
+  // 🔥 FORMAT NUMBER HERE
+  const formatted = String(num).padStart(3, '0');
+
   const paths = [
-    `/${num}.jpeg`,
-    `/${num}.jpg`,
-    `/${num}.JPG`,
-    `/${num}.png`,
+    `/${formatted}.jpeg`,
+    `/${formatted}.jpg`,
+    `/${formatted}.JPG`,
+    `/${formatted}.png`,
   ];
 
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
 
-  if (!visible) return null; // 🔥 completely remove from DOM
+  if (!visible) return null;
 
   return (
     <div className="bg-[#fff4dc] flex align-middle hover:shadow-xl transition transform duration-300 shadow-black shadow-xl rounded-xl">
       <img
         src={paths[index]}
-        alt={`Gallery Image ${num}`}
+        alt={`Gallery Image ${formatted}`}
         className="w-full rounded-xl max-h-64 object-contain mx-auto"
         loading="lazy"
         onError={() => {
           if (index < paths.length - 1) {
-            setIndex(index + 1); // try next format
+            setIndex(index + 1);
           } else {
-            setVisible(false); // 🔥 remove card completely
+            setVisible(false);
           }
         }}
       />
